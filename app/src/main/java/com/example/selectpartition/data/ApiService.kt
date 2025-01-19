@@ -5,6 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("/super_top.php?action=topglav")
+    @GET("super_top.php?action=topglav")
     suspend fun getProduct(): Response<ProductSection>
 }

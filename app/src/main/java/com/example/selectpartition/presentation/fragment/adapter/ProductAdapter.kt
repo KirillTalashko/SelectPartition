@@ -1,4 +1,4 @@
-package com.example.selectpartition.presentation.adapter
+package com.example.selectpartition.presentation.fragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.selectpartition.data.model.Products
 import com.example.selectpartition.databinding.ItemProductBinding
-import com.example.selectpartition.presentation.viewHolder.ProductViewHolder
+import com.example.selectpartition.presentation.fragment.viewHolder.ProductViewHolder
 
-class ProductAdapter() : ListAdapter<Products, ProductViewHolder>(DIFF_CALLBACK) {
-
+class ProductAdapter(private val defaultCurrency: String) :
+    ListAdapter<Products, ProductViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Products>() {
@@ -30,6 +30,6 @@ class ProductAdapter() : ListAdapter<Products, ProductViewHolder>(DIFF_CALLBACK)
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, defaultCurrency)
     }
 }

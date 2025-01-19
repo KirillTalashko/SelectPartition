@@ -11,7 +11,7 @@ fun ImageView.loadPhoto(
     error: Int = null ?: R.drawable.no_image
 ) {
     Glide.with(this.rootView)
-        .load(url)
+        .load("https://szorin.vodovoz.ru".plus(url))
         .placeholder(placeholder)
         .error(error)
         .into(this)
