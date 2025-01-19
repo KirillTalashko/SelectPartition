@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:textSize="20sp"
+        android:textSize="15sp"
         tools:text="300 р"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -37,9 +37,9 @@
 
     <ImageView
         android:id="@+id/image_view_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
         tools:src="@drawable/ic_shop_basket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

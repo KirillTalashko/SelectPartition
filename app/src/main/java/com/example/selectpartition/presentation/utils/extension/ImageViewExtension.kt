@@ -13,6 +13,7 @@ fun ImageView.loadPhoto(
     Glide.with(this.rootView)
         .load("https://szorin.vodovoz.ru".plus(url))
         .placeholder(placeholder)
+        .override(500, 1000)
         .error(error)
         .into(this)
 }

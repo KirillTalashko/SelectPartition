@@ -1,6 +1,7 @@
 package com.example.selectpartition.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,11 +48,13 @@ class ProductSectionFragment : Fragment() {
     }
 
     private fun observerViewModel() {
-        viewModel.stateProductSelection.observe(viewLifecycleOwner) { section ->
-            when (section) {
+        viewModel.stateProductSelection.observe(viewLifecycleOwner) { state ->
+            Log.i("youTag", "$state")
+            when (state) {
                 is ProductSectionFragmentState.Error -> {
                     binding.progressBarSwitchProduct.visibility = View.GONE
                     binding.textViewError.visibility = View.VISIBLE
+                    binding.textViewError.text = state.error
                 }
 
                 ProductSectionFragmentState.LoadingProduct -> {
@@ -61,7 +64,7 @@ class ProductSectionFragment : Fragment() {
 
                 is ProductSectionFragmentState.SuccessProduct -> {
                     binding.progressBarSwitchProduct.visibility = View.GONE
-                    setupViewPager(section.product)
+                    setupViewPager(state.section)
                 }
 
             }
@@ -72,9 +75,12 @@ class ProductSectionFragment : Fragment() {
         binding.viewPagerSection.adapter =
             ItemAdapter(requireActivity(), section)
 
+        binding.viewPagerSection.isUserInputEnabled = false
+
         TabLayoutMediator(binding.tabLayoutSection, binding.viewPagerSection) { tab, position ->
             tab.text = section[position].name
         }.attach()
+
     }
 
     override fun onDestroy() {
